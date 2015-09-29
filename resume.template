@@ -1,0 +1,245 @@
+<html lang="en" class="mdl-js">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="Resume of {{basics.name}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Resume of {{basics.name}}</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.blue_grey-light_blue.min.css">
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style type="text/css">
+            {{{css}}}
+    </style>
+    <style type="text/css" media="print">
+            {{{printcss}}}
+    </style>
+</head>
+
+<body class="mdl-resume mdl-color--grey-100 mdl-color-text--grey-700 mdl-base" cz-shortcut-listen="true">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            {{#basics.picture}}
+            <div class="section__circle-container">
+                <div class="section__circle-container__circle" style="background-image: url({{basics.picture}})">
+                </div>
+            </div>
+            {{/basics.picture}}
+            <span class="mdl-layout-title">{{basics.name}}<p>{{basics.label}}</p></span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            {{#basics.email}}
+            <div class="badge mdl-cell--hide-phone">
+                <div class="icon pull-left text-center"><span class="fa fa-envelope fa-fw"></span></div>
+                <div class="title only pull-right"><a class="badge" href="mailto:{{basics.email}}" target="_blank">{{basics.email}}</a></div>
+            </div>
+            {{/basics.email}}
+            {{#basics.phone}}
+            <div class="badge mdl-cell--hide-phone">
+                <div class="icon pull-left text-center"><span class="fa fa-phone fa-fw"></span></div>
+                <div class="title only pull-right"><a class="" href="tel:{basics.phone}}">{{basics.phone}}</a>
+                </div>
+            </div>
+            {{/basics.phone}}
+
+        </div>
+    </header>
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">{{basics.name}}<p>{{basics.label}}</p></span>
+        <nav class="mdl-navigation">
+
+            <a class="mdl-navigation__link" href="#work">Work Experience</a>
+            <!-- CONTACT -->
+                {{#basics.location}}
+                    <div class="mdl-navigation__link">
+                        <div class="icon pull-left text-center"><span class="fa fa-map-marker fa-fw"></span></div>
+                        <div class="title pull-right"></div>
+                        <div class="description pull-right">{{basics.location.city}},{{basics.location.region}} {{#basics.location.postalCode}}, {{basics.location.postalCode}}{{/basics.location.postalCode}}{{#basics.location.countryCode}} {{basics.location.countryCode}}{{/basics.location.countryCode}}</div>
+                    </div>
+                {{/basics.location}}
+                {{#basics.phone}}
+                    <div class="contact-item">
+                        <div class="icon pull-left text-center"><span class="fa fa-phone fa-fw"></span></div>
+                        <div class="title only pull-right"><a class="badge" href="tel:{basics.phone}}">{{basics.phone}}</a>
+                        </div>
+                    </div>
+                {{/basics.phone}}
+                {{#basics.email}}
+                    <div class="contact-item">
+                        <div class="icon pull-left text-center"><span class="fa fa-envelope fa-fw"></span></div>
+                        <div class="title only pull-right"><a class="badge" href="mailto:{{basics.email}}" target="_blank">{{basics.email}}</a></div>
+                    </div>
+                {{/basics.email}}
+                {{#basics.website}}
+                    <div class="contact-item">
+                        <div class="icon pull-left text-center"><span class="fa fa-globe fa-fw"></span></div>
+                        <div class="title only pull-right"><a href="{{basics.website}}" target="_blank">{{basics.website}}</a></div>
+                    </div>
+                {{/basics.website}}
+                {{#basics.profiles}}
+                    <div class="contact-item">
+                        <div class="icon pull-left text-center"><span class="{{iconClass}} fa-fw"></span></div>
+                        <div class="description pull-right"><a class="badge" href="{{url}}" target="_blank">{{#username}}{{username}}{{/username}}{{^username}}{{url}}{{/username}}</a></div>
+                    </div>
+                {{/basics.profiles}}
+
+
+        </nav>
+    </div>
+    <main class="mdl-layout__content">
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--8-col-desktop">
+                {{#basics.summary}}
+                    <!-- ABOUT ME -->
+                    <div class="resume-card mdl-card__supporting-text mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title mdl-card--border">
+                            <h4 class="mdl-card__title-text"><i class="fa fa-university ico"></i>&nbsp;&nbsp;About</h4>
+                        </div>
+                        <p class="pad">{{basics.summary}}</p>
+                    </div>
+                {{/basics.summary}}
+                <!-- WORK EXPERIENCE -->
+
+                <div id="work" class="resume-card mdl-card__supporting-text mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title mdl-card--border">
+                        <h4 class="mdl-card__title-text"><i class="fa fa-suitcase ico"></i>&nbsp;&nbsp;Work Experience</h4>
+                        <p class="mdl-card__title-text experienceYears"><i class="fa fa-clock-o"></i>&nbsp;{{inYears}}&nbsp;Years</p>
+                    </div>
+                    {{#work}}
+                    <div class="job mdl-card--border">
+
+                        <div class="details mdl-cell mdl-cell--12-col">
+                            <div class="where">{{company}}</div>
+                            {{#website}}
+                                <div class="address">
+                                    <a href="{{website}}" target= "_blank">{{website}}</a>
+                                </div>
+                            {{/website}}
+                            <div class="year">{{startDateMonth}}{{startDateYear}} – {{endDateMonth}}{{endDateYear}}</div>
+                            <div class="profession">{{position}}</div>
+                        </div>
+
+
+                        <div class="mdl-card__actions mdl-grid mdl-grid--no-spacing">
+                            <div class="description">
+                                {{{summary}}}
+                                {{#boolHighlights}}
+                                    <div class="highlights-wrap">
+                                        {{#highlights}}
+                                            <div class="highlight section__text mdl-cell mdl-cell--12-col-desktop">{{{.}}}</div>
+                                        {{/highlights}}
+                                    </div>
+
+                                {{/boolHighlights}}
+                            </div>
+
+                        </div>
+                    </div>
+                    {{/work}}
+                </div>
+
+            </div>
+            <div class="mdl-cell mdl-cell--4-col-desktop">
+                <!-- EDUCATION -->
+
+                    <div class="resume-card mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title mdl-card--border">
+                            <h4 class="mdl-card__title-text"><i class="fa fa-university ico"></i>&nbsp;&nbsp;Education</h4>
+                        </div>
+                        <ul id="education">
+                            {{#education}}
+                            <li>
+                                <div class="year pull-left">{{startDateYear}} {{endDateYear}}</div>
+                                <div class="description pull-right">
+                                    <h3>{{institution}}</h3>
+                                    {{#studyType}}<p><i class= "fa fa-graduation-cap ico"></i> {{studyType}}</p>{{/studyType}}
+                                    <p>{{area}}</p>
+                                    {{#gpa}}
+                                        <p>
+                                            GPA: {{gpa}}
+                                        </p>
+                                    {{/gpa}}
+                                    {{#educationCourses}}
+                                        <div>Courses</div>
+                                        <ul class="list-group">
+                                            {{#courses}}
+                                                <li class="list-group-item">{{{.}}}</li>
+                                            {{/courses}}
+                                        </ul>
+                                    {{/educationCourses}}
+                                </div>
+                            </li>
+                            {{/education}}
+                        </ul>
+                    </div>
+
+                {{#skillsBool}}
+                    <!-- SKILLS -->
+                    <div class="resume-card mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title mdl-card--border">
+                            <h4 class="mdl-card__title-text"><i class="fa fa-tasks ico"></i>&nbsp;&nbsp;Skills</h4>
+                        </div>
+                        {{#skills}}
+                            <div class="skills pad">
+                                <div class="item-skills">
+                                    {{name}}
+                                    {{#level}}<span class="skill-level">{{level}}</span>{{/level}}
+                                </div>
+                                <div class="">
+                                    {{#keywords}}
+                                        <span class="skill badge">{{{.}}}</span>
+                                    {{/keywords}}
+                                </div>
+                            </div>
+                        {{/skills}}
+                    </div>
+                {{/skillsBool}}
+                {{#interestsBool}}
+                    <!-- HOBBIES -->
+                    <div class="resume-card mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title mdl-card--border">
+                            <h4 class="mdl-card__title-text"><i class="fa fa-code ico"></i>&nbsp;&nbsp;Current Code Interests</h4>
+                        </div>
+                        {{#interests}}
+                            <div class="interests pad">
+                                <div class="item-interests">
+                                    {{name}}
+                                </div>
+                                <div class="">
+                                    {{#keywords}}
+                                        <span class="interest badge">{{{.}}}</span>
+                                    {{/keywords}}
+                                </div>
+                            </div>
+                        {{/interests}}
+                    </div>
+                {{/interestsBool}}
+                {{#referencesBool}}
+                    <!-- REFERENCES -->
+                    <div class="resume-card mdl-card__supporting-text mdl-card">
+                        <div class="mdl-card__title mdl-card--border">
+                            <h4><i class="fa fa-check-square ico"></i> References</h4>
+                        </div>
+                        {{#references}}
+                            <blockquote>
+                                <div>{{{reference}}}</div>
+                                <footer>
+                                    <a href="{{website}}" target="_blank">{{name}}</a>
+                                </footer>
+                            </blockquote>
+                            <br>
+                        {{/references}}
+                    </div>
+                {{/referencesBool}}
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>
