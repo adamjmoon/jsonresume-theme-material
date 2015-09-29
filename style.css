@@ -36,7 +36,7 @@ p {
     width: 50px;
     height: 50px;
     border-radius: 32px;
-    margin: 0px 8px 0 0;
+    margin: 0px 8px 0px 0px;
 }
 
 @media screen and (max-width: 1024px){
@@ -45,7 +45,6 @@ p {
         padding: 0 16px 0 56px;
     }
 }
-
 
 header .material-icons{
     font-size: 42px;
@@ -63,8 +62,13 @@ header .material-icons{
     padding: 8px;
     box-sizing: border-box;
 }
+
 .mdl-card__title.mdl-card--border {
     justify-content: space-between;
+}
+
+.mdl-layout-title {
+  margin-left: 10px;
 }
 
 .resume-card {
