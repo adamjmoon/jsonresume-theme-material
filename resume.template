@@ -21,7 +21,7 @@
 </head>
 
 <body class="mdl-resume mdl-color--grey-100 mdl-color-text--grey-700 mdl-base" cz-shortcut-listen="true">
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout__header--scroll">
     <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
             <!-- Title -->
@@ -35,15 +35,13 @@
             <!-- Add spacer, to align navigation to the right -->
             <div class="mdl-layout-spacer"></div>
             {{#basics.email}}
-            <div class="badge mdl-cell--hide-phone">
-                <div class="icon pull-left text-center"><span class="fa fa-envelope fa-fw"></span></div>
-                <div class="title"><a class="badge" href="mailto:{{basics.email}}" target="_blank">{{basics.email}}</a></div>
+            <div class="mdl-navigation__link templates mdl-cell--hide-phone">
+                <div class="title"><i class="fa fa-envelope"></i>&nbsp;<a class="badge" href="mailto:{{basics.email}}" target="_blank">{{basics.email}}</a></div>
             </div>
             {{/basics.email}}
             {{#basics.phone}}
-            <div class="badge mdl-cell--hide-phone">
-                <div class="icon pull-left text-center"><span class="fa fa-phone fa-fw"></span></div>
-                <div class="title"><a class="" href="tel:{basics.phone}}">{{basics.phone}}</a>
+            <div class="mdl-navigation__link templates mdl-cell--hide-phone">
+                <div class="title"><i class="fa fa-phone fa-fw"></i>&nbsp;<a class="" href="tel:{basics.phone}}">{{basics.phone}}</a>
                 </div>
             </div>
             {{/basics.phone}}
@@ -51,44 +49,49 @@
         </div>
     </header>
     <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">{{basics.name}}<p>{{basics.label}}</p></span>
+        
         <nav class="mdl-navigation">
 
             <a class="mdl-navigation__link" href="#work">Work Experience</a>
+            <a class="mdl-navigation__link" href="#education">Education</a>
+            <a class="mdl-navigation__link" href="#skills">Skills</a>
             <!-- CONTACT -->
-                {{#basics.location}}
-                    <div class="mdl-navigation__link">
-                        <div class="icon pull-left text-center"><span class="fa fa-map-marker fa-fw"></span></div>
-                        <div class="title pull-right"></div>
-                        <div class="description pull-right">{{basics.location.city}},{{basics.location.region}} {{#basics.location.postalCode}}, {{basics.location.postalCode}}{{/basics.location.postalCode}}{{#basics.location.countryCode}} {{basics.location.countryCode}}{{/basics.location.countryCode}}</div>
-                    </div>
-                {{/basics.location}}
-                {{#basics.phone}}
-                    <div class="contact-item">
-                        <div class="icon pull-left text-center"><span class="fa fa-phone fa-fw"></span></div>
-                        <div class="title only pull-right"><a class="badge" href="tel:{basics.phone}}">{{basics.phone}}</a>
-                        </div>
-                    </div>
-                {{/basics.phone}}
-                {{#basics.email}}
-                    <div class="contact-item">
-                        <div class="icon pull-left text-center"><span class="fa fa-envelope fa-fw"></span></div>
-                        <div class="title only pull-right"><a class="badge" href="mailto:{{basics.email}}" target="_blank">{{basics.email}}</a></div>
-                    </div>
-                {{/basics.email}}
-                {{#basics.website}}
-                    <div class="contact-item">
-                        <div class="icon pull-left text-center"><span class="fa fa-globe fa-fw"></span></div>
-                        <div class="title only pull-right"><a href="{{basics.website}}" target="_blank">{{basics.website}}</a></div>
-                    </div>
-                {{/basics.website}}
-                {{#basics.profiles}}
-                    <div class="contact-item">
-                        <div class="icon pull-left text-center"><span class="{{iconClass}} fa-fw"></span></div>
-                        <div class="description pull-right"><a class="badge" href="{{url}}" target="_blank">{{#username}}{{username}}{{/username}}{{^username}}{{url}}{{/username}}</a></div>
-                    </div>
-                {{/basics.profiles}}
+            <div class="resume-card mdl-card__supporting-text mdl-card mdl-shadow--2dp">
+              <div class="mdl-card__title mdl-card--border pad"><span><i class="fa fa-bullseye"></i>&nbsp;&nbsp;Contact</span></div>
+              {{#basics.location}}
+                      <div class="contact-item">
+                          <div class="icon pull-left text-center"><span class="fa fa-map-marker fa-fw"></span></div>
+                          <div class="title"></div>
+                          <div class="description">{{basics.location.city}},{{basics.location.region}} {{#basics.location.postalCode}} {{basics.location.postalCode}}{{/basics.location.postalCode}}{{#basics.location.countryCode}} {{basics.location.countryCode}}{{/basics.location.countryCode}}</div>
+                      </div>
+                  {{/basics.location}}
+                  {{#basics.phone}}
+                      <div class="contact-item">
+                          <div class="title only"><i class="fa fa-phone fa-fw"></i>&nbsp;<a class="" href="tel:{basics.phone}}">{{basics.phone}}</a>
+                          </div>
+                      </div>
+                  {{/basics.phone}}
+                  {{#basics.email}}
+                      <div class="contact-item">
+                          <div class="icon pull-left text-center"><span class="fa fa-envelope fa-fw"></span></div>
+                          <div class="title only"><a class="" href="mailto:{{basics.email}}" target="_blank">{{basics.email}}</a></div>
+                      </div>
+                  {{/basics.email}}
+                  {{#basics.website}}
+                      <div class="contact-item">
+                          <div class="icon pull-left text-center"><span class="fa fa-globe fa-fw"></span></div>
+                          <div class="title only"><a href="{{basics.website}}" target="_blank">{{basics.website}}</a></div>
+                      </div>
+                  {{/basics.website}}
+                  {{#basics.profiles}}
+                      <div class="contact-item">
+                          <div class="icon pull-left text-center"><span class="{{iconClass}} fa-fw"></span></div>
+                          <div class="description"><a class="" href="{{url}}" target="_blank">{{#username}}{{username}}{{/username}}{{^username}}{{url}}{{/username}}</a></div>
+                      </div>
+                  {{/basics.profiles}}
 
+            </div>
+                
 
         </nav>
     </div>

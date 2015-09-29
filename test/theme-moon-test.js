@@ -1,10 +1,10 @@
 var theme = require("../index.js");
-var resumeJson = require("./resume.json");
+var resume = require("resume-schema").resumeJson;
 var chai = require("chai");
 var expect = chai.expect;
 
 describe('theme', function () {
-  var resumeHTML = theme.render(resumeJson);
+  var resumeHTML = theme.render(resume);
   it('should render html from resume json', function () {
     expect(resumeHTML.length).to.be.greaterThan(0);
   });
