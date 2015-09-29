@@ -37,13 +37,13 @@
             {{#basics.email}}
             <div class="badge mdl-cell--hide-phone">
                 <div class="icon pull-left text-center"><span class="fa fa-envelope fa-fw"></span></div>
-                <div class="title only pull-right"><a class="badge" href="mailto:{{basics.email}}" target="_blank">{{basics.email}}</a></div>
+                <div class="title"><a class="badge" href="mailto:{{basics.email}}" target="_blank">{{basics.email}}</a></div>
             </div>
             {{/basics.email}}
             {{#basics.phone}}
             <div class="badge mdl-cell--hide-phone">
                 <div class="icon pull-left text-center"><span class="fa fa-phone fa-fw"></span></div>
-                <div class="title only pull-right"><a class="" href="tel:{basics.phone}}">{{basics.phone}}</a>
+                <div class="title"><a class="" href="tel:{basics.phone}}">{{basics.phone}}</a>
                 </div>
             </div>
             {{/basics.phone}}

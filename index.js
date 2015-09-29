@@ -156,7 +156,7 @@ function render(resume, themeOptions) {
         w.endDateYear = (w.endDate || "").substr(0, 4);
         w.endDateMonth = getMonth(w.endDate || "");
       } else {
-        w.endDateYear = 'Present'
+        w.endDateYear = 'Present';
       }
       if (w.highlights) {
         if (w.highlights[0]) {
@@ -170,7 +170,7 @@ function render(resume, themeOptions) {
 
   if (!resume.basics.picture && hasEmail(resume)) {
     resume.basics.picture = gravatar.url(resume.basics.email.replace('(at)', '@'), {
-      s: '65',
+      s: '60',
       r: 'pg',
       d: 'mm'
     });
