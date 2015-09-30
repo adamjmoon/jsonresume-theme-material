@@ -19,6 +19,10 @@ html, body {
     margin: 0;
     padding: 0;
 }
+a {
+    color: #fff;
+
+}
 
 h4 {
     font-size: 24px;
@@ -36,13 +40,33 @@ p {
     width: 60px;
     height: 60px;
     border-radius: 32px;
-    margin: 0px 8px 0px 0px;
+    margin: 0px 8px 0px 10px;
+}
+
+.mdl-card__title{
+    background-color: rgb(96,125,139);
+    color: #fff;
+}
+
+.contact-card{
+    background-color: #32475c;
+    color: #fff;
+    margin-left: 1px;
 }
 
 @media screen and (max-width: 1024px){
     .mdl-layout__header-row {
-        height: 56px;
+        height: 60px;
         padding: 0 16px 0 56px;
+    }
+
+    .mdl-card__title-text{
+        font-size: 18px;
+    }
+
+    .mdl-layout__drawer>.mdl-layout-title {
+        line-height: 45px;
+        padding-left: 0px;
     }
 }
 
@@ -419,7 +443,7 @@ header .material-icons{
     border-top-right-radius: 4px;
 }
 .highlight {
-    background-color: #ccc !important;
+    background-color: #eee !important;
     color: #000;
 }
 .highlight {
@@ -430,6 +454,7 @@ header .material-icons{
     background-color: #fff;
     border: 1px solid #ddd;
 }
+
 @media (max-width: 479px) {
     .mdl-grid {
         padding: 0px;
