@@ -3,6 +3,44 @@ body {
     -webkit-print-color-adjust: exact;
 }
 
+.mdl-layout-title {
+    position: absolute;
+    left: 0;
+}
+
+.mdl-grid{
+    padding: 0px;
+}
+
+.mdl-cell {
+    padding: 0px;
+}
+
+.mdl-card{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding:0;
+}
+
+.mdl-cell--8-col-desktop, .mdl-cell--8-col-tablet{
+    width: 60%;
+    padding: 0 15px;
+}
+
+.mdl-cell--4-col-desktop, .mdl-cell--4-col-tablet{
+    width: 40%;
+    padding: 0 15px;
+}
+
+.col-sm-7{
+    width: 60%;
+    padding: 0 15px;
+}
+
+.mdl-layout, .mdl-layout__content{
+    overflow: visible !important;
+}
+
 a[href]:after {
     content: none !important;
 }
@@ -13,15 +51,6 @@ a[href]:after {
 
 .box {
     margin-bottom: -10px;
-}
-.col-sm-5{
-    width: 40%;
-    padding: 0 15px;
-}
-
-.col-sm-7{
-    width: 60%;
-    padding: 0 15px;
 }
 
 .skills .col-sm-offset-1,
@@ -60,12 +89,12 @@ a[href]:after {
     margin: 0;
 }
 
-.list-group-item{
+.highlight{
     border: none;
     margin: 0;
     padding: 5px 15px;
 }
-.list-group-item:after{
+.highlight:after{
     content: '';
     position: absolute;
     top: 8px;
@@ -79,7 +108,9 @@ a[href]:after {
     pointer-events: none;
 }
 
-.list-group-item{
+.highlight{
   background-color: #fff !important;
   color: #000;
 }
+
+.j

@@ -100,12 +100,12 @@
     </div>
     <main class="mdl-layout__content">
         <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--8-col-desktop">
+            <div class="mdl-cell mdl-cell--8-col-desktop mdl-cell--8-col-tablet">
                 {{#basics.summary}}
                     <!-- ABOUT ME -->
                     <div class="resume-card mdl-card__supporting-text mdl-card mdl-shadow--2dp">
                         <div class="mdl-card__title mdl-card--border">
-                            <h4 class="mdl-card__title-text"><i class="fa fa-university ico"></i>&nbsp;&nbsp;About</h4>
+                            <h4 class="mdl-card__title-text"><i class="fa fa-user ico"></i>&nbsp;&nbsp;About</h4>
                         </div>
                         <p class="pad">{{basics.summary}}</p>
                     </div>
@@ -118,7 +118,7 @@
                         <p class="mdl-card__title-text experienceYears"><i class="fa fa-clock-o"></i>&nbsp;{{inYears}}&nbsp;Years</p>
                     </div>
                     {{#work}}
-                    <div class="job mdl-card--border">
+                    <div class="job">
 
                         <div class="details mdl-cell mdl-cell--12-col">
                             <div class="where">{{company}}</div>
@@ -151,7 +151,7 @@
                 </div>
 
             </div>
-            <div class="mdl-cell mdl-cell--4-col-desktop">
+            <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--4-col-tablet">
                 <!-- EDUCATION -->
 
                     <div class="resume-card mdl-card mdl-shadow--2dp">

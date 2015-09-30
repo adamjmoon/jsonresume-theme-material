@@ -40,13 +40,18 @@ p {
     width: 60px;
     height: 60px;
     border-radius: 32px;
-    margin: 0px 8px 0px 10px;
+    margin: 0px 10px 0px 10px;
 }
 
 .mdl-card__title{
     background-color: rgb(96,125,139);
     color: #fff;
 }
+.mdl-layout__drawer>.mdl-layout-title {
+    line-height: 40px;
+    padding-left: 0px;
+}
+
 
 .contact-card{
     background-color: #32475c;
