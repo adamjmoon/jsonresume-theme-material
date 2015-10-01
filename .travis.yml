@@ -9,3 +9,4 @@ sudo: false
 notifications:
   on_success: change
   on_failure: always
+  
