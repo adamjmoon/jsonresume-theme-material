@@ -135,14 +135,14 @@
                         <div class="mdl-card__actions mdl-grid mdl-grid--no-spacing">
                             <div class="description">
                                 {{{summary}}}
-                                {{#boolHighlights}}
-                                    <div class="highlights-wrap">
-                                        {{#highlights}}
-                                            <div class="highlight section__text mdl-cell mdl-cell--12-col-tablet mdl-cell--12-col-desktop">{{{.}}}</div>
-                                        {{/highlights}}
-                                    </div>
+                                
+                                <div class="highlights-wrap">
+                                    {{#highlights}}
+                                        <div class="highlight section__text mdl-cell mdl-cell--12-col-tablet mdl-cell--12-col-desktop">{{{.}}}</div>
+                                    {{/highlights}}
+                                </div>
 
-                                {{/boolHighlights}}
+                                
                             </div>
 
                         </div>
@@ -185,7 +185,7 @@
                         </ul>
                     </div>
 
-                {{#skillsBool}}
+                
                     <!-- SKILLS -->
                     <div id="skills" class="resume-card mdl-card mdl-shadow--2dp">
                         <div class="mdl-card__title mdl-card--border">
@@ -205,8 +205,8 @@
                             </div>
                         {{/skills}}
                     </div>
-                {{/skillsBool}}
-                {{#interestsBool}}
+                
+                
                     <!-- INTERESTS -->
                     <div id="interests" class="resume-card mdl-card mdl-shadow--2dp">
                         <div class="mdl-card__title mdl-card--border">
@@ -225,8 +225,7 @@
                             </div>
                         {{/interests}}
                     </div>
-                {{/interestsBool}}
-                {{#referencesBool}}
+                
                     <!-- REFERENCES -->
                     <div id="references" class="resume-card mdl-card__supporting-text mdl-card">
                         <div class="mdl-card__title mdl-card--border">
@@ -242,7 +241,7 @@
                             <br>
                         {{/references}}
                     </div>
-                {{/referencesBool}}
+                
             </div>
         </div>
     </main>
