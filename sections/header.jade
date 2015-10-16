@@ -1,0 +1,22 @@
+header.mdl-layout__header
+  .mdl-layout__header-row
+    // Title
+    if basics.picture
+      .section__circle-container
+        .section__circle-container__circle(style='background-image: url(#{basics.picture})')
+    span.mdl-layout-title
+      | {{basics.name}}
+      p {{basics.label}}
+    // Add spacer, to align navigation to the right
+    .mdl-layout-spacer
+    if basics.email
+      .mdl-cell--hide-phone
+        .title
+          i.fa.fa-envelope
+          a(href='mailto:{{basics.email}}', target='_blank') #{basics.email}
+    |             {{#basics.phone}}
+    .mdl-cell--hide-phone
+      .title
+        i.fa.fa-phone.fa-fw
+        |  {{basics.phone}}
+    |             {{/basics.phone}}

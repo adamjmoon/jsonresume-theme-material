@@ -19,9 +19,36 @@ html, body {
     margin: 0;
     padding: 0;
 }
-a {
+header a, .contact-card a {
     color: #fff;
+}
 
+.resume-card > button {
+    position: absolute;
+    z-index: 99;
+    top: 8px;
+    right: 8px;
+}
+
+.contact-item{
+  padding: 3px 0px 3px 2px;
+  line-height: 25px;
+}
+
+.back-blue {
+    background-color: #32475c;
+    color: #fff;
+}
+
+.marge-bot{
+  max-resolution: 5px;
+}
+
+.title {
+    padding: 4px 6px;
+    border-radius: 15px;
+    margin-right: 3px;
+    text-transform: none;
 }
 
 h4 {
@@ -40,7 +67,7 @@ p {
     width: 60px;
     height: 60px;
     border-radius: 32px;
-    margin: 0px 10px 0px 10px;
+    margin: 0;
 }
 
 .mdl-card__title{
@@ -51,18 +78,41 @@ p {
     line-height: 40px;
     padding-left: 0px;
 }
-
+.resume-drawer {
+  border: none;
+}
+/* iOS Safari specific workaround */
+.resume-drawer .mdl-menu__container {
+  z-index: -1;
+}
+.resume-drawer .resume-navigation {
+  z-index: -2;
+}
+/* END iOS Safari specific workaround */
+.resume-drawer .mdl-menu .mdl-menu__item {
+  display: flex;
+  align-items: center;
+}
+.resume-drawer-header {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 16px;
+  height: 151px;
+}
+.mdl-layout__drawer .mdl-navigation {
+padding-top: 0px;
+}
 
 .contact-card{
-    background-color: #32475c;
-    color: #fff;
-    margin-left: 1px;
+  border-radius: 0px;
+  margin-top: 0px;
 }
 
 @media screen and (max-width: 1024px){
     .mdl-layout__header-row {
         height: 60px;
-        padding: 0 16px 0 56px;
     }
 
     .mdl-card__title-text{
@@ -75,8 +125,40 @@ p {
     }
 }
 
-header .material-icons{
-    font-size: 42px;
+.resume-layout-waterfall .mdl-layout__header-row .mdl-navigation__link:last-of-type  {
+  padding-right: 0;
+}
+
+@media (max-width: 850px) {
+.mdl-resume-components__nav {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    display: block;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: 120px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 8px;
+    z-index: 100;
+    white-space: nowrap;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .mdl-layout__header {
+    display: block !important;
+  }
+}
+
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
+  color: #fff;
+}
+
+.mdl-layout__drawer{
+  border-right: none;
 }
 
 .txt-center {
@@ -146,8 +228,9 @@ header .material-icons{
 
 .mdl-resume .mdl-card__actions {
     margin: 0;
-    padding: 4px 16px;
+    padding: 4px 8px;
     color: inherit;
+    margin-bottom: 5px;
 }
 
 .mdl-resume .mdl-card__actions a {
@@ -318,7 +401,6 @@ header .material-icons{
 #education li {
     z-index: 2;
     position: relative;
-    float: left;
 }
 
 #awards .year,
@@ -336,7 +418,6 @@ header .material-icons{
     display: inline-block;
     background: #32475c;
     color: #fff;
-    margin-bottom: 10px;
     position: relative;
     padding: 10px;
     border-bottom: 1px solid #32475c;
@@ -373,15 +454,6 @@ header .material-icons{
     padding: 0;
 }
 
-.demo-layout-transparent {
-}
-
-.demo-layout-transparent .mdl-layout__header,
-.demo-layout-transparent .mdl-layout__drawer-button {
-    /* This background is dark, so we set text to white. Use 87% black instead if
-       your background is light. */
-    color: black;
-}
 
 .item-interests,
 .item-skills {
@@ -398,16 +470,15 @@ header .material-icons{
 .skill {
     color: #fff;
     display: inline-block;
-    margin-right: 5px;
-    margin-bottom: 5px;
-    padding: 5px 10px;
+    margin-bottom: 2px;
+    padding: 0px 7px;
     background: #32475c;
     position: relative;
     font-size: .85em;
 }
 
 .skill-level {
-    background-color: #227c74;
+    background-color: #4c4c4c;
     border-radius: 4px;
     color: #fff;
     padding: 1px 8px;
@@ -430,12 +501,20 @@ header .material-icons{
     padding: 8px 8px 0px 8px;
 }
 
+.mdl-layout__drawer-button i{
+  font-size: 36px;
+  color: #fff;
+}
+
+.job {
+  align-self: center;
+  margin: 8px 0;
+  width: 94%;
+}
+
 .job .details {
     text-align: left;
-    margin-left: 0px;
-    margin-right: 0px;
-    width: auto !important;
-    margin-bottom: 5px;
+    margin: 0 0 5px 0;
     color: #fff;
     background-color: #32475c;
     width: 100%;
@@ -460,8 +539,29 @@ header .material-icons{
     border: 1px solid #ddd;
 }
 
+.badge {
+  border-radius: 20px;
+}
+
+.sub-nav a{
+  margin-right: 2px;
+  color: #fff !important;
+}
+
+.resume-icon {
+  vertical-align: bottom;
+  margin-right: 10px;
+}
+
 @media (max-width: 479px) {
     .mdl-grid {
         padding: 0px;
     }
+}
+
+
+@media (min-width: 840px) {
+  .mdl-grid {
+      padding: 0px;
+  }
 }

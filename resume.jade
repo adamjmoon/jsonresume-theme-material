@@ -1,0 +1,209 @@
+html.mdl-js(lang='en')
+  head
+    meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+    meta(name='description', content='Resume of {{basics.name}}')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Resume of {{basics.name}}
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&lang=en')
+    link(rel='stylesheet', href='https://storage.googleapis.com/code.getmdl.io/1.0.4/material.blue_grey-light_blue.min.css')
+    script(src='https://storage.googleapis.com/code.getmdl.io/1.0.4/material.min.js')
+    link(href='//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css', rel='stylesheet')
+    link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')
+    style(type='text/css').
+      {{{css}}}
+    style(type='text/css', media='print').
+      {{{printcss}}}
+  body.mdl-resume.mdl-color--grey-100.mdl-color-text--grey-700.mdl-base(cz-shortcut-listen='true')
+    .mdl-layout.mdl-js-layout.mdl-layout--fixed-header.mdl-layout__header--scroll
+      header.mdl-layout__header
+        .mdl-layout__header-row
+          // Title
+          | {{#basics.picture}}
+          .section__circle-container
+            .section__circle-container__circle(style='background-image: url({{basics.picture}})')
+          |             {{/basics.picture}}
+          span.mdl-layout-title
+            | {{basics.name}}
+            p {{basics.label}}
+          // Add spacer, to align navigation to the right
+          .mdl-layout-spacer
+          |             {{#basics.email}}
+          .mdl-cell--hide-phone
+            .title
+              i.fa.fa-envelope
+              a(href='mailto:{{basics.email}}', target='_blank') {{basics.email}}
+          |             {{/basics.email}}
+          |             {{#basics.phone}}
+          .mdl-cell--hide-phone
+            .title
+              i.fa.fa-phone.fa-fw
+              |  {{basics.phone}}
+          |             {{/basics.phone}}
+      .mdl-layout__drawer
+        span.mdl-layout-title
+          | {{basics.name}}
+          p {{basics.label}}
+        .section__circle-container
+          .section__circle-container__circle(style='background-image: url({{basics.picture}})')
+        nav.mdl-navigation
+          // CONTACT
+          .resume-card.contact-card.mdl-card__supporting-text.mdl-card.mdl-shadow--2dp
+            .mdl-card__title.mdl-card--border.pad
+              span
+                i.fa.fa-bullseye
+                |   Contact
+            |                 {{#basics.location}}
+            .contact-item
+              .icon.pull-left.text-center
+                span.fa.fa-map-marker.fa-fw
+              .description
+                | {{basics.location.city}},{{basics.location.region}} {{#basics.location.postalCode}} {{basics.location.postalCode}}{{/basics.location.postalCode}}{{#basics.location.countryCode}} {{basics.location.countryCode}}{{/basics.location.countryCode}}
+            |                 {{/basics.location}}
+            |                 {{#basics.phone}}
+            .contact-item
+              .title.only
+                i.fa.fa-phone.fa-fw
+                a(href='tel:{basics.phone}}') {{basics.phone}}
+            |                 {{/basics.phone}}
+            |                 {{#basics.email}}
+            .contact-item
+              .icon.pull-left.text-center
+                span.fa.fa-envelope.fa-fw
+              .title.only
+                a(href='mailto:{{basics.email}}', target='_blank') {{basics.email}}
+            |                 {{/basics.email}}
+            |                 {{#basics.website}}
+            .contact-item
+              .icon.pull-left.text-center
+                span.fa.fa-globe.fa-fw
+              .title.only
+                a(href='{{basics.website}}', target='_blank') {{basics.website}}
+            |                 {{/basics.website}}
+            |                 {{#basics.profiles}}
+            .contact-item
+              .icon.pull-left.text-center
+                span.fa-fw(class='{{iconClass}}')
+              .description
+                a(href='{{url}}', target='_blank') {{#username}}{{username}}{{/username}}{{^username}}{{url}}{{/username}}
+            |                 {{/basics.profiles}}
+          a.mdl-navigation__link(href='#work') Work Experience
+          a.mdl-navigation__link(href='#education') Education
+          a.mdl-navigation__link(href='#skills') Skills
+      main.mdl-layout__content
+        .mdl-grid
+          .mdl-cell.mdl-cell--8-col-desktop.mdl-cell--8-col-tablet
+            | {{#basics.summary}}
+            // ABOUT ME
+            .resume-card.mdl-card__supporting-text.mdl-card.mdl-shadow--2dp
+              .mdl-card__title.mdl-card--border
+                h4.mdl-card__title-text
+                  i.fa.fa-user.ico
+                  |   About
+              p.pad {{basics.summary}}
+            |                 {{/basics.summary}}
+            // WORK EXPERIENCE
+            #work.resume-card.mdl-card__supporting-text.mdl-card.mdl-shadow--2dp
+              .mdl-card__title.mdl-card--border
+                h4.mdl-card__title-text
+                  i.fa.fa-suitcase.ico
+                  |   Work Experience
+                p.mdl-card__title-text.experienceYears
+                  i.fa.fa-clock-o
+                  |  {{inYears}} Years
+              |                     {{#work}}
+              .job
+                .details.mdl-cell.mdl-cell--12-col
+                  .where {{company}}
+                  |                             {{#website}}
+                  .address
+                    a(href='{{website}}', target='_blank') {{website}}
+                  |                             {{/website}}
+                  .year {{startDateMonth}}{{startDateYear}} – {{endDateMonth}}{{endDateYear}}
+                  .profession {{position}}
+                .mdl-card__actions.mdl-grid.mdl-grid--no-spacing
+                  .description
+                    | {{{summary}}}
+                    .highlights-wrap
+                      | {{#highlights}}
+                      .highlight.section__text.mdl-cell.mdl-cell--12-col-tablet.mdl-cell--12-col-desktop {{{.}}}
+                      |                                     {{/highlights}}
+              |                     {{/work}}
+          .mdl-cell.mdl-cell--4-col-desktop.mdl-cell--4-col-tablet
+            // EDUCATION
+            .resume-card.mdl-card.mdl-shadow--2dp
+              .mdl-card__title.mdl-card--border
+                h4.mdl-card__title-text
+                  i.fa.fa-university.ico
+                  |   Education
+              ul#education
+                | {{#education}}
+                li
+                  .year.pull-left {{startDateYear}} {{endDateYear}}
+                  .description.pull-right
+                    h3 {{institution}}
+                    |                                     {{#studyType}}
+                    p
+                      i.fa.fa-graduation-cap.ico
+                      |  {{studyType}}
+                    | {{/studyType}}
+                    p {{area}}
+                    |                                     {{#gpa}}
+                    p
+                      | GPA: {{gpa}}
+                    |                                     {{/gpa}}
+                    |                                     {{#educationCourses}}
+                    div Courses
+                    ul.list-group
+                      | {{#courses}}
+                      li.list-group-item {{{.}}}
+                      |                                             {{/courses}}
+                    |                                     {{/educationCourses}}
+                |                             {{/education}}
+            // SKILLS
+            #skills.resume-card.mdl-card.mdl-shadow--2dp
+              .mdl-card__title.mdl-card--border
+                h4.mdl-card__title-text
+                  i.fa.fa-tasks.ico
+                  |   Skills
+              |                         {{#skills}}
+              .skills.pad-no-bottom
+                .item-skills
+                  | {{name}}
+                  | {{#level}}
+                  span.skill-level {{level}}
+                  | {{/level}}
+                div
+                  | {{#keywords}}
+                  span.skill.badge {{{.}}}
+                  |                                     {{/keywords}}
+              |                         {{/skills}}
+            // INTERESTS
+            #interests.resume-card.mdl-card.mdl-shadow--2dp
+              .mdl-card__title.mdl-card--border
+                h4.mdl-card__title-text
+                  i.fa.fa-code.ico
+                  |   Current Code Interests
+              |                         {{#interests}}
+              .interests.pad-no-bottom
+                .item-interests
+                  | {{name}}
+                div
+                  | {{#keywords}}
+                  span.interest.badge {{{.}}}
+                  |                                     {{/keywords}}
+              |                         {{/interests}}
+            // REFERENCES
+            #references.resume-card.mdl-card__supporting-text.mdl-card
+              .mdl-card__title.mdl-card--border
+                h4
+                  i.fa.fa-check-square.ico
+                  |  References
+              |                         {{#references}}
+              blockquote
+                div {{{reference}}}
+                footer
+                  a(href='{{website}}', target='_blank') {{name}}
+              br
+              |                         {{/references}}

@@ -35,11 +35,10 @@ function getMonth(startDateStr) {
   }
 }
 
-function render(resume) {
-
+function render(resume, themeOptions) {
 
   if (resume.basics && resume.basics.length > 0) {
-    resume.basics = basics[0];
+    resume.basics = resume.basics[0];
   }
 
   if (resume.basics && resume.basics.name) {
@@ -176,7 +175,7 @@ function render(resume) {
     resume.basics.picture = gravatar.url(resume.basics.email.replace('(at)', '@'), {
       s: '60',
       r: 'pg',
-      d: 'mm'
+      d: '404'
     });
   }
 
@@ -249,6 +248,8 @@ function render(resume) {
       return (new Date()).getFullYear() - firstJobStartDate.getFullYear();
     };
   })(resume.work[resume.work.length - 1].startDate);
+  
+  resume.themeOptions = themeOptions;
   var resumeHTML = Mustache.render(theme, resume);
 
 
