@@ -8,15 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Resume of {{basics.name}}</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-    {{#themeOptions.material-primary-color }}
-        {{#themeOptions }} 
-          <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.{{& material-primary-color }}-{{& material-sec-color }}.min.css">
-        {{/themeOptions }}
-    {{/themeOptions.material-primary-color }}
-    {{^themeOptions.material-primary-color }}
-      <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.blue_grey-orange.min.css">
-    {{/themeOptions.material-primary-color }}
-    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.min.js"></script>
+   
+    {{#meta.palette}}
+        <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.3.0/material.{{& meta.palette.primary }}-{{& meta.palette.secondary }}.min.css">
+    {{/meta.palette}}
+  
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.3.0/material.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style type="text/css">
@@ -27,20 +24,19 @@
     </style>
 </head>
 
-<body class="mdl-resume mdl-color--grey-100 mdl-color-text--grey-700 mdl-base" cz-shortcut-listen="true">
+<body class="mdl-resume mdl-base" cz-shortcut-listen="true">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
         <header class="mdl-layout__header mdl-layout__header--waterfall mdl-cell--hide-desktop">
-           
+            
             <div class="mdl-layout__header-row">
                 <!-- Title -->
                 <span class="mdl-layout-title mdl-layout-title-main">{{basics.name}}<p>{{basics.label}}</p></span>
                 <!-- Add spacer, to align navigation to the right -->
                 <div class="mdl-layout-spacer"></div>
-                 <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon " id="btn1 " data-upgraded=",MaterialButton,MaterialRipple ">
-              <i class="material-icons ">more_vert</i>
-            <span class="mdl-button__ripple-container "><span class="mdl-ripple is-animating " style="transform: translate(-50%, -50%) translate(13px, 19px); "></span></span></button>
+                   
             </div>
-            <div class="sub-header-row mdl-layout__header-row mdl-shadow--4dp mdl-cell--hide-desktop back-blue">
+        </header>
+     <div class="sub-header-row mdl-layout__header-row mdl-shadow--4dp mdl-cell--hide-desktop">
                 <!-- Navigation -->
                 <nav class="mdl-navigation sub-nav">
                     <a href="#work" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" data-upgraded=",MaterialButton,MaterialRipple">
@@ -67,23 +63,22 @@
   </nav>
     
   </div>
- 
-    </header>
-    
-    <div class="mdl-layout__drawer mdl-color--blue-grey-800 mdl-color-text--grey-100">
+    <div class="mdl-layout__drawer">
         <span class="mdl-layout-title mdl-layout-title-drawer">{{basics.name}}<p>{{basics.label}}</p></span>
-        <div class="section__circle-container ">
-            <div class="section__circle-container__circle" style="background-image: url({{basics.picture}}); margin: 0 0 5px 5px;">
+        {{#basics.picture}}
+            <div class="section__circle-container ">
+                <div class="section__circle-container__circle" style="background-image: url({{basics.picture}}); margin: 0 0 5px 5px;">
+                </div>
             </div>
-        </div>
-        <nav class="mdl-navigation mdl-color--blue-grey-800 ">
+        {{/basics.picture}}
+        <nav class="mdl-navigation mdl-pallette.-blue-grey-800 ">
             <!-- CONTACT -->
             <div class="resume-card contact-card mdl-card__supporting-text mdl-card mdl-shadow--2dp back-blue ">
                 <div class="mdl-card__title mdl-card--border pad marg-bot "><span><i class="fa fa-bullseye"></i>&nbsp;&nbsp;Contact</span></div>
                 {{#basics.location}}
                     <div class="contact-item ">
                         <div class="icon pull-left text-center "><span class="fa fa-map-marker fa-fw "></span>&nbsp;&nbsp;</div>
-                        <div class="description ">{{basics.location.city}},{{basics.location.region}}{{#basics.location.countryCode}} {{basics.location.countryCode}}{{/basics.location.countryCode}}</div>
+                        <div class="contact-item-desc">{{basics.location.city}},&nbsp;{{basics.location.region}}{{#basics.location.countryCode}}&nbsp;&nbsp;{{basics.location.countryCode}}{{/basics.location.countryCode}}</div>
                     </div>
                 {{/basics.location}}
                 {{#basics.phone}}
@@ -107,13 +102,28 @@
                 {{#basics.profiles}}
                     <div class="contact-item ">
                         <div class="icon pull-left text-center "><span class="{{iconClass}} fa-fw "></span>&nbsp;&nbsp;</div>
-                        <div class="description"><a class=" " href="{{url}} " target="_blank ">{{#username}}{{username}}{{/username}}{{^username}}{{url}}{{/username}}</a></div>
+                        <div class="contact-item-desc"><a class=" " href="{{url}} " target="_blank ">{{#username}}{{username}}{{/username}}{{^username}}{{url}}{{/username}}</a></div>
                     </div>
                 {{/basics.profiles}}
             </div>
             <a class="mdl-navigation__link " href="#work"><i id="work-btn" class="material-icons resume-icon">work</i>Work Experience</a>
             <a class="mdl-navigation__link " href="#education-card"><i class="material-icons resume-icon">account_balance</i>Education</a>
             <a class="mdl-navigation__link " href="#skills"><i class="material-icons resume-icon">list</i>Skills</a>
+            {{#languages.length}}
+                <a class="mdl-navigation__link " href="#languages"><i class="material-icons resume-icon">language</i>Languages</a>
+            {{/languages.length}}
+            {{#publications.length}}
+                <a class="mdl-navigation__link " href="#publications"><i class="material-icons resume-icon">book</i>Publications</a>
+            {{/publications.length}}
+            {{#awards.length}}
+                <a class="mdl-navigation__link " href="#awards"><i class="material-icons resume-icon">emoji_events</i>Awards</a>
+            {{/awards.length}}
+            {{#volunteer.length}}
+                <a class="mdl-navigation__link " href="#volunteer"><i class="material-icons resume-icon">emoji_people</i>Volunteer</a>
+            {{/volunteer.length}}
+            {{#interests.length}}
+                <a class="mdl-navigation__link " href="#interests"><i class="material-icons resume-icon">sentiment_very_satisfied</i>Interests</a>
+            {{/interests.length}}
         </nav>
     </div>
     <main class="mdl-layout__content ">
@@ -122,86 +132,88 @@
             <div class="mdl-cell mdl-cell--7-col-desktop mdl-cell--12-col-tablet ">
                 {{#basics.summary}}
                     <!-- ABOUT ME -->
-                    <article class="resume-card mdl-card__supporting-text mdl-card mdl-shadow--2dp ">
-                        <div class="mdl-card__title mdl-card--border ">
-                            <h4 class="mdl-card__title-text "><i class="fa fa-user ico "></i>&nbsp;&nbsp;About</h4>
-                        </div>
-                       
-                        <p class="pad ">{{basics.summary}}</p>
+                    <article class="resume-card mdl-card__supporting-text mdl-card">
+                        <p class="pad mdl-button--colored">{{basics.summary}}</p>
                     </article>
                     
                 {{/basics.summary}}
                 <!-- WORK EXPERIENCE -->
 
-                <div id="work" class="resume-card mdl-card__supporting-text mdl-card mdl-shadow--2dp ">
-                    <div class="mdl-card__title mdl-card--border ">
-                        <h4 class="mdl-card__title-text "><i class="fa fa-suitcase ico "></i>&nbsp;&nbsp;Work Experience</h4>
+                <div id="work" class="resume-card mdl-card__supporting-text mdl-card">
+                    <div class="mdl-card__title mdl-card--border">
+                        <h4 class="mdl-card__title-text ">Work Experience</h4>
                         <p class="mdl-card__title-text experienceYears "><i class="fa fa-clock-o "></i>&nbsp;{{inYears}}&nbsp;Years</p>
                     </div>
                     {{#work}}
-                    <div class="job mdl-card mdl-shadow--4dp ">
-
-                        <div class="details mdl-cell mdl-cell--12-col ">
-                            <div class="where ">{{company}}</div>
+                    <div class="job mdl-card mdl-shadow--4dp mdl-cell--12-col">
+                        <div class="mdl-layout__header mdl-layout__header-row" style="padding-left:10px">
+                            <!-- Title -->
+                            <span class="mdl-layout-title">{{company}}<p class="where">{{location}}</p></span>
+                           
                             {{#website}}
-                                <div class="address ">
-                                    <a href="{{website}} " target= "_blank ">{{website}}</a>
-                                </div>
+                                <span class="mdl-cell--hide-phone mdl-cell--hide-tablet">
+                                    &nbsp;<a href="{{website}}" target= "_blank "><i class="material-icons">open_in_new</i></a>
+                                </span>
                             {{/website}}
-                            <div class="year">{{startDateMonth}}{{startDateYear}} – {{endDateMonth}}{{endDateYear}}</div>
-                            <div class="profession">{{position}}</div>
+                            
+                            <!-- Add spacer, to align navigation to the right -->
+                            <div class="mdl-layout-spacer"></div>
+                            <span class="mdl-layout-title">{{position}}<p>{{startDateMonth}}{{startDateYear}} – {{endDateMonth}}{{endDateYear}}</p></span>
                         </div>
-
-
-                        <div class="mdl-card__actions mdl-grid mdl-grid--no-spacing ">
-                            <div class="description ">
-                                {{{summary}}}
-                                
-                                <div class="highlights-wrap ">
-                                    {{#highlights}}
-                                        <div class="highlight section__text mdl-cell mdl-cell--12-col-tablet mdl-cell--12-col-desktop ">{{{.}}}</div>
-                                    {{/highlights}}
-                                </div>
-
-                                
-                            </div>
-
+                        
+                        <div class="mdl-card__supporting-text">
+                            {{{summary}}}
+                        </div>
+                       
+                        <div class="mdl-card__actions mdl-grid mdl-grid--no-spacing">
+                            <ul class="mdl-list">
+                                {{#highlights}}
+                                <li class="mdl-list__item">
+                                    <span class="mdl-list__item-primary-content">
+                                        <i class="material-icons">check_circle_outlined</i>
+                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                        <span class="mdl-list__item-sub-title">
+                                            {{{.}}}
+                                        </span>
+                                    </span>
+                                </li>
+                                 {{/highlights}}
+                            </ul>
+                           
                         </div>
                     </div>
                     {{/work}}
                 </div>
                 <!-- REFERENCES -->
-                    {{#references.length}}
-                      <div id="references" class="resume-card mdl-card__supporting-text mdl-card ">
-                          <div class="mdl-card__title mdl-card--border ">
-                              <h4><i class="fa fa-check-square ico "></i> References</h4>
-                          </div>
-                          {{#references}}
-                              <blockquote>
-                                  <div>{{{reference}}}</div>
-                                  <footer>
-                                      <a href="{{website}} " target="_blank ">{{name}}</a>
-                                  </footer>
-                              </blockquote>
-                              <br>
-                          {{/references}}
-                      </div>
-                    {{/references.length}}
+                {{#references.length}}
+                    <div id="references" class="resume-card mdl-card__supporting-text mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title mdl-card--border ">
+                            <h4 class="mdl-card__title-text">References</h4>
+                        </div>
+                        {{#references}}
+                            <blockquote>
+                                <div>{{{reference}}}</div>
+                                <footer>
+                                    <a href="{{website}} " target="_blank ">{{name}}</a>
+                                </footer>
+                            </blockquote>
+                        {{/references}}
+                    </div>
+                {{/references.length}}
                 
 
             </div>
             <div class="mdl-cell mdl-cell--5-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-tablet">
                 <!-- EDUCATION -->
-
-                    <div id="education-card" class="resume-card mdl-card mdl-shadow--2dp ">
+                    <div id="education-card" class="resume-card mdl-card mdl-shadow--2dp">
                         <div class="mdl-card__title mdl-card--border ">
-                            <h4 class="mdl-card__title-text "><i class="fa fa-university ico "></i>&nbsp;&nbsp;Education</h4>
+                            <h4 class="mdl-card__title-text ">Education</h4>
                         </div>
-                        <ul id="education">
+                        <ul id="education" class="misc-list">
                             {{#education}}
-                            <li>
+                            <li class="misc-list-item">
                                 <div class="year pull-left ">{{startDateYear}} {{endDateYear}}</div>
-                                <div class="description ">
+                                <div class="description mdl-button--raised mdl-button--colored">
                                     <h3>{{institution}}</h3>
                                     {{#studyType}}<p><i class= "fa fa-graduation-cap ico "></i> {{studyType}}</p>{{/studyType}}
                                     <p>{{area}}</p>
@@ -224,11 +236,59 @@
                         </ul>
                     </div>
 
+                    <!-- AWARDS -->
+                    {{#awards}}
+                    <div id="awards-card" class="resume-card mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title mdl-card--border ">
+                            <h4 class="mdl-card__title-text ">Awards</h4>
+                        </div>
+                        <ul id="awards" class="misc-list">
+                            {{#awards}}
+                            <li class="misc-list-item">
+                                <div class="year pull-left">{{date}}</div>
+                                <div class="description mdl-button--raised mdl-button--colored">
+                                    <h3>{{title}}</h3>
+                                    <p>{{awarder}}</p>
+                                    <p>{{description}}</p>
+                                </div>
+                            </li>
+                            {{/awards}}
+                        </ul>
+                    </div>
+                    {{/awards}}
+
+                    <!-- PUBLICATIONS -->
+                    {{#publications}}
+                    <div id="publications-card" class="resume-card mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title mdl-card--border ">
+                            <h4 class="mdl-card__title-text">Publications</h4>
+                        </div>
+                        <ul id="publications" class="misc-list">
+                            {{#publications}}
+                            <li class="misc-list-item">
+                                <div class="year pull-left">{{releaseDate}}</div>
+                                <div class="description mdl-button--raised mdl-button--colored">
+                                    <h3>{{name}}
+                                     {{#website}}
+                                        <span class="mdl-cell--hide-phone">
+                                            &nbsp;<a href="{{website}}" target= "_blank "><i class="material-icons">open_in_new</i></a>
+                                        </span>
+                                    {{/website}} 
+                                    </h3>
+                                    
+                                    <p>{{publisher}}</p>
+                                    <p>{{summary}}</p>
+                                </div>
+                            </li>
+                            {{/publications}}
+                        </ul>
+                    </div>
+                    {{/publications}}
                 
                     <!-- SKILLS -->
                     <div id="skills" class="resume-card mdl-card mdl-shadow--2dp">
                         <div class="mdl-card__title mdl-card--border ">
-                            <h4 class="mdl-card__title-text "><i class="fa fa-tasks ico"></i>&nbsp;&nbsp;Skills</h4>
+                            <h4 class="mdl-card__title-text ">Skills</h4>
                         </div>
                         {{#skills}}
                             <div class="skills pad-no-bottom ">
@@ -238,18 +298,32 @@
                                 </div>
                                 <div class=" ">
                                     {{#keywords}}
-                                        <span class="skill badge">{{{.}}}</span>
+                                        <span class="skill mdl-chip">{{{.}}}</span>
                                     {{/keywords}}
                                 </div>
                             </div>
                         {{/skills}}
                     </div>
                 
+                    <!-- LANGUAGES -->
+                    <div id="languages" class="resume-card mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title mdl-card--border ">
+                            <h4 class="mdl-card__title-text ">Languages</h4>
+                        </div>
+                        {{#languages}}
+                            <div class="interests pad-no-bottom ">
+                                <div class="item-interests ">
+                                    <span class="skill mdl-chip">{{language}}</span>
+                                     {{#fluency}}<span class="level ">{{fluency}}</span>{{/fluency}}
+                                </div>
+                            </div>
+                        {{/languages}}
+                    </div>
                 
                     <!-- INTERESTS -->
                     <div id="interests " class="resume-card mdl-card mdl-shadow--2dp">
                         <div class="mdl-card__title mdl-card--border ">
-                            <h4 class="mdl-card__title-text "><i class="fa fa-code ico"></i>&nbsp;&nbsp;Interests</h4>
+                            <h4 class="mdl-card__title-text ">Interests</h4>
                         </div>
                         {{#interests}}
                             <div class="interests pad-no-bottom ">
@@ -258,14 +332,44 @@
                                 </div>
                                 <div class=" ">
                                     {{#keywords}}
-                                        <span class="interest badge ">{{{.}}}</span>
+                                        <span class="interest mdl-chip">{{{.}}}</span>
                                     {{/keywords}}
                                 </div>
                             </div>
                         {{/interests}}
                     </div>
                 
-                    
+                    <!-- VOLUNTEER -->
+                    {{#volunteer}}
+                    <div id="volunteer-card" class="resume-card mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title mdl-card--border ">
+                            <h4 class="mdl-card__title-text ">Volunteer</h4>
+                        </div>
+                        <ul id="volunteer" class="misc-list">
+                            {{#volunteer}}
+                            <li class="misc-list-item">
+                                <div class="year pull-left">{{startDate}}-{{endDate}}</div>
+                                <div class="description mdl-button--raised mdl-button--colored">
+                                    <h3>{{position}}</h3>
+                                    <span>{{organization}}
+                                    {{#website}}
+                                        <span class="mdl-cell--hide-phone">
+                                            &nbsp;<a href="{{website}}" target= "_blank "><i class="material-icons">open_in_new</i></a>
+                                        </span>
+                                    {{/website}} 
+                                    </span>
+                                    
+                                    <ul class="list-group ">
+                                        {{#highlights}}
+                                            <li class="list-group-item ">{{{.}}}</li>
+                                        {{/highlights}}
+                                    </ul>
+                                </div>
+                            </li>
+                            {{/volunteer}}
+                        </ul>
+                    </div>
+                    {{/volunteer}}
             </div>
         </div>
     </main>

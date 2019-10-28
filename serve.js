@@ -1,25 +1,32 @@
 var http = require("http");
-var resume = require("resume-schema").resumeJson;
+var resume = require("./resume.json");
 var theme = require("./index.js");
-var themeOptions  = {
-    "material-primary-color" : "blue_grey",
-    "material-sec-color" : "deep_orange",
-  };
+var palette  = {
+    "primary" : "blue_grey",
+    "secondary" : "deep_orange",
+};
 
 var port = 4000;
+console.log(resume.meta.palette)
+if(!(resume.meta && resume.meta.palette )){
+  resume.meta = { palette };
+}
+  
+
 http.createServer(function (req, res) {
   res.writeHead(200, {
     "Content-Type": "text/html"
   });
-  res.end(render(themeOptions));
+  res.end(render(resume));
 }).listen(port);
 
 console.log("Preview: http://localhost:4000/");
 console.log("Serving..");
 
-function render(themeOptions) {
+
+function render(resume) {
   try {
-    return theme.render(resume, themeOptions);
+    return theme.render(resume);
   } catch (e) {
     console.log(e.message);
     return "";

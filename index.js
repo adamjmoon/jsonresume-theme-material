@@ -35,7 +35,15 @@ function getMonth(startDateStr) {
   }
 }
 
-function render(resume, themeOptions) {
+function render(resume) {
+
+  if(!resume) return '';
+
+  if(resume.meta && (!resume.meta.palette || !resume.meta.palette.primary))
+    resume.meta.palette.primary = 'grey';
+
+  if(resume.meta && (!resume.meta.palette || !resume.meta.palette.secondary))
+    resume.meta.palette.secondary = 'blue';
 
   if (resume.basics && resume.basics.length > 0) {
     resume.basics = resume.basics[0];
@@ -240,6 +248,10 @@ function render(resume, themeOptions) {
   }
 
   resume.css = fs.readFileSync(__dirname + "/style.css", "utf-8");
+  
+  if(resume.meta.darkMode) 
+    resume.css += fs.readFileSync(__dirname + "/style-dark.css", "utf-8");
+
   resume.printcss = fs.readFileSync(__dirname + "/print.css", "utf-8");
   var theme = fs.readFileSync(__dirname + '/resume.template', 'utf8');
   resume.inYears = (function (_firstJobStartDateStr) {
@@ -249,7 +261,7 @@ function render(resume, themeOptions) {
     };
   })(resume.work[resume.work.length - 1].startDate);
   
-  resume.themeOptions = themeOptions;
+ 
   var resumeHTML = Mustache.render(theme, resume);
 
 
