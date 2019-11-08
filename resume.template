@@ -43,7 +43,7 @@
   <i id="work-btn" class="material-icons">work</i>
 <span class="mdl-button__ripple-container "><span class="mdl-ripple"></span></span>
     </a>
-                    <a href="#education-card" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" data-upgraded=",MaterialButton,MaterialRipple">
+    <a href="#education-card" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" data-upgraded=",MaterialButton,MaterialRipple">
   <i id="education-btn" class="material-icons">account_balance</i>
 <span class="mdl-button__ripple-container "><span class="mdl-ripple"></span></span>
     </a>
@@ -65,12 +65,11 @@
   </div>
     <div class="mdl-layout__drawer">
         <span class="mdl-layout-title mdl-layout-title-drawer">{{basics.name}}<p>{{basics.label}}</p></span>
-        {{#basics.picture}}
+        
             <div class="section__circle-container ">
-                <div class="section__circle-container__circle" style="background-image: url({{basics.picture}}); margin: 0 0 5px 5px;">
+                <div class="section__circle-container__circle" style="background-image: url({{photo}}); margin: 0 0 5px 5px;">
                 </div>
             </div>
-        {{/basics.picture}}
         <nav class="mdl-navigation mdl-pallette.-blue-grey-800 ">
             <!-- CONTACT -->
             <div class="resume-card contact-card mdl-card__supporting-text mdl-card mdl-shadow--2dp back-blue ">
@@ -106,24 +105,27 @@
                     </div>
                 {{/basics.profiles}}
             </div>
-            <a class="mdl-navigation__link " href="#work"><i id="work-btn" class="material-icons resume-icon">work</i>Work Experience</a>
-            <a class="mdl-navigation__link " href="#education-card"><i class="material-icons resume-icon">account_balance</i>Education</a>
-            <a class="mdl-navigation__link " href="#skills"><i class="material-icons resume-icon">list</i>Skills</a>
-            {{#languages.length}}
-                <a class="mdl-navigation__link " href="#languages"><i class="material-icons resume-icon">language</i>Languages</a>
-            {{/languages.length}}
-            {{#publications.length}}
-                <a class="mdl-navigation__link " href="#publications"><i class="material-icons resume-icon">book</i>Publications</a>
-            {{/publications.length}}
-            {{#awards.length}}
-                <a class="mdl-navigation__link " href="#awards"><i class="material-icons resume-icon">emoji_events</i>Awards</a>
-            {{/awards.length}}
-            {{#volunteer.length}}
-                <a class="mdl-navigation__link " href="#volunteer"><i class="material-icons resume-icon">emoji_people</i>Volunteer</a>
-            {{/volunteer.length}}
-            {{#interests.length}}
-                <a class="mdl-navigation__link " href="#interests"><i class="material-icons resume-icon">sentiment_very_satisfied</i>Interests</a>
-            {{/interests.length}}
+            <div id="nav-links">
+                <a class="mdl-navigation__link " href="#work"><i id="work-btn" class="material-icons resume-icon">work</i>Work Experience</a>
+                <a class="mdl-navigation__link " href="#education-card"><i class="material-icons resume-icon">account_balance</i>Education</a>
+                <a class="mdl-navigation__link " href="#skills"><i class="material-icons resume-icon">list</i>Skills</a>
+                {{#languages.length}}
+                    <a class="mdl-navigation__link " href="#languages"><i class="material-icons resume-icon">language</i>Languages</a>
+                {{/languages.length}}
+                {{#publications.length}}
+                    <a class="mdl-navigation__link " href="#publications"><i class="material-icons resume-icon">book</i>Publications</a>
+                {{/publications.length}}
+                {{#awards.length}}
+                    <a class="mdl-navigation__link " href="#awards"><i class="material-icons resume-icon">emoji_events</i>Awards</a>
+                {{/awards.length}}
+                {{#volunteer.length}}
+                    <a class="mdl-navigation__link " href="#volunteer"><i class="material-icons resume-icon">emoji_people</i>Volunteer</a>
+                {{/volunteer.length}}
+                {{#interests.length}}
+                    <a class="mdl-navigation__link " href="#interests"><i class="material-icons resume-icon">sentiment_very_satisfied</i>Interests</a>
+                {{/interests.length}}
+            </div>
+            
         </nav>
     </div>
     <main class="mdl-layout__content ">

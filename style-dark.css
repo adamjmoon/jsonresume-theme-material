@@ -66,3 +66,8 @@ body {
 .year {
 	background-color: #002b36;
 }
+
+.mdl-layout__drawer-button i {
+	font-size: 42px;
+	color: #002b36;
+}

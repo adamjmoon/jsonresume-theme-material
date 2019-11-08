@@ -4,8 +4,8 @@
 		"version": "v1.0.0",
 		"lastModified": "2019-10-17T15:53:00",
 		"palette": {
-			"primary": "blue_grey",
-			"secondary": "red"
+			"primary": "amber",
+			"secondary": "blue"
 		},
 		"darkMode": true
 	},

@@ -36,7 +36,6 @@ function getMonth(startDateStr) {
 }
 
 function render(resume) {
-
   if(!resume) return '';
 
   if(resume.meta && (!resume.meta.palette || !resume.meta.palette.primary))
@@ -51,6 +50,18 @@ function render(resume) {
 
   if (resume.basics && resume.basics.name) {
     resume.basics.capitalName = resume.basics.name.toUpperCase();
+  }
+
+  if(resume.basics && resume.basics.email) {
+    resume.basics.gravatar = gravatar.url(resume.basics.email, {
+                    s: '80',
+                    r: 'pg',
+                    d: 'mm'
+                });
+  }
+ 
+  if (resume.basics.picture || resume.basics.gravatar) {
+      resume.photo = resume.basics.picture ? resume.basics.picture : resume.basics.gravatar;
   }
 
   if (resume.basics && resume.basics.profiles) {
@@ -176,14 +187,6 @@ function render(resume) {
           }
         }
       }
-    });
-  }
-
-  if (!resume.basics.picture && hasEmail(resume)) {
-    resume.basics.picture = gravatar.url(resume.basics.email.replace('(at)', '@'), {
-      s: '60',
-      r: 'pg',
-      d: '404'
     });
   }
 
