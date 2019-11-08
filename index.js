@@ -252,7 +252,7 @@ function render(resume) {
 
   resume.css = fs.readFileSync(__dirname + "/style.css", "utf-8");
   
-  if(resume.meta.darkMode) 
+  if(resume.meta && resume.meta.darkMode) 
     resume.css += fs.readFileSync(__dirname + "/style-dark.css", "utf-8");
 
   resume.printcss = fs.readFileSync(__dirname + "/print.css", "utf-8");
