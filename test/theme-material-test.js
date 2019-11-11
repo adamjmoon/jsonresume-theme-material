@@ -5,7 +5,6 @@ var expect = chai.expect;
 
 describe('theme', function () {
   describe('render', function () {
-    
    
     it('should render html with correct html tag', function () {
       var resumeHTML = theme.render(resume);
